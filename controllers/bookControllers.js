@@ -32,7 +32,7 @@ exports.createBook = async (req, res) => {
 
 exports.deleteBook = async (req, res) => {
   try {
-    res.json(await book.deleteOne({ id: req.params.bookId }));
+    res.json(await book.deleteOne({ '_id': req.params.bookId }));
   } catch (error) {
     res.json({ message: error });
   }
@@ -42,7 +42,7 @@ exports.updateBook = async (req, res) => {
   try {
     res.json(
       await book.updateOne(
-        { id: req.params.bookId },
+        { '_id': req.params.bookId },
         {
           $set: {
             title: req.body.title,

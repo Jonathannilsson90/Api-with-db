@@ -7,7 +7,7 @@ const app = express()
 
 app.use(express.json())
 app.use('/api/books', require('./routes/bookRoutes.js') )
-
+mongoose.set('strictQuery', false);
 mongoose.connect(
     process.env.DB_URL, () => console.log('DB connected')
     )
